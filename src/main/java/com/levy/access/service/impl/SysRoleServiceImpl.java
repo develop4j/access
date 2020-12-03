@@ -8,6 +8,8 @@ import com.levy.access.service.SysRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author levy
  * @date 2020/12/2
@@ -25,5 +27,10 @@ public class SysRoleServiceImpl implements SysRoleService {
             throw new LevyException(ResultEnum.ERROE);
         }
         return role;
+    }
+
+    @Override
+    public List<SysRoleDO> getRoleList() {
+        return sysRoleHelper.getRoleList();
     }
 }

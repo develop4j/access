@@ -5,6 +5,8 @@ import com.levy.access.model.SysRoleDO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author levy
  * @date 2020/12/2
@@ -18,5 +20,9 @@ public class SysRoleHelper {
 
     public SysRoleDO getSysRole(Long roleId) {
         return sysRoleMapper.selectByPrimaryKey(roleId);
+    }
+
+    public List<SysRoleDO> getRoleList() {
+        return sysRoleMapper.selectAll();
     }
 }

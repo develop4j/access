@@ -1,6 +1,5 @@
 package com.levy.access.controller;
 
-import com.levy.access.exception.LevyException;
 import com.levy.access.http.HttpResult;
 import com.levy.access.service.SysRoleService;
 import io.swagger.annotations.Api;
@@ -25,5 +24,10 @@ public class SysRoleController {
     @GetMapping("/getRole")
     public HttpResult getSysRole(Long roleId) {
         return new HttpResult(sysRoleService.getSysRole(roleId));
+    }
+
+    @GetMapping("roleList")
+    public HttpResult getRoleList() {
+        return new HttpResult(sysRoleService.getRoleList());
     }
 }
