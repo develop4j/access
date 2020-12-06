@@ -1,6 +1,6 @@
 package com.levy.access.service;
 
-import com.levy.access.exception.LevyException;
+import com.levy.access.exception.AccessException;
 import com.levy.access.model.SysRoleDO;
 
 import java.util.List;
@@ -16,9 +16,9 @@ public interface SysRoleService {
      *
      * @param roleId
      * @return
-     * @throws LevyException
+     * @throws AccessException
      */
-    SysRoleDO getSysRole(Long roleId) throws LevyException;
+    SysRoleDO getSysRole(Long roleId) throws AccessException;
 
     /**
      * 获取所有的角色列表

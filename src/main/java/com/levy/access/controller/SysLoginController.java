@@ -4,6 +4,7 @@ import com.levy.access.http.HttpResult;
 import com.levy.access.model.SysUserDO;
 import com.levy.access.service.SysLoginService;
 import com.levy.access.vo.LoginBean;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +18,7 @@ import java.io.IOException;
  */
 @RestController
 @RequestMapping("/login")
+@Api(description = "登录相关api")
 public class SysLoginController {
 
     @Autowired

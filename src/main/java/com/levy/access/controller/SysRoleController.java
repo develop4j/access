@@ -17,7 +17,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/role")
-@Api(description = "角色相关信息")
+@Api(description = "角色相关api")
 public class SysRoleController {
 
     @Autowired

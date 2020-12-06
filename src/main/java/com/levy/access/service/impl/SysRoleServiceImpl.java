@@ -1,7 +1,7 @@
 package com.levy.access.service.impl;
 
 import com.levy.access.constants.enums.ResultEnum;
-import com.levy.access.exception.LevyException;
+import com.levy.access.exception.AccessException;
 import com.levy.access.helper.SysRoleHelper;
 import com.levy.access.model.SysRoleDO;
 import com.levy.access.service.SysRoleService;
@@ -21,10 +21,10 @@ public class SysRoleServiceImpl implements SysRoleService {
     SysRoleHelper sysRoleHelper;
 
     @Override
-    public SysRoleDO getSysRole(Long roleId) throws LevyException {
+    public SysRoleDO getSysRole(Long roleId) throws AccessException {
         SysRoleDO role = sysRoleHelper.getSysRole(roleId);
         if (role == null) {
-            throw new LevyException(ResultEnum.ERROE);
+            throw new AccessException(ResultEnum.ERROE);
         }
         return role;
     }

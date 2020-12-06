@@ -1,6 +1,6 @@
 package com.levy.access.handler;
 
-import com.levy.access.exception.LevyException;
+import com.levy.access.exception.AccessException;
 import com.levy.access.http.HttpResult;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class ExceptionsHandler {
 
     @ResponseBody
-    @ExceptionHandler(LevyException.class)
-    public HttpResult handlerException(LevyException exception) {
+    @ExceptionHandler(AccessException.class)
+    public HttpResult handlerException(AccessException exception) {
         return new HttpResult(exception.getCode(), exception.getMessage(), null);
     }
 

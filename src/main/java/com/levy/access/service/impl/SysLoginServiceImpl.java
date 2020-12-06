@@ -3,7 +3,7 @@ package com.levy.access.service.impl;
 import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.Producer;
 import com.levy.access.constants.enums.ResultEnum;
-import com.levy.access.exception.LevyException;
+import com.levy.access.exception.AccessException;
 import com.levy.access.helper.SysUserHelper;
 import com.levy.access.model.SysUserDO;
 import com.levy.access.service.SysLoginService;
@@ -54,16 +54,16 @@ public class SysLoginServiceImpl implements SysLoginService {
         // 获取验证码
         String captcha = (String) request.getSession().getAttribute(Constants.KAPTCHA_SESSION_KEY);
         if (captcha == null) {
-            throw new LevyException(ResultEnum.CAPTCHA_INVALID);
+            throw new AccessException(ResultEnum.CAPTCHA_INVALID);
         }
         // 验证码不正确
         if (!loginBean.getCaptcha().equals(captcha)) {
-            throw new LevyException(ResultEnum.CAPTCHA_ERROR);
+            throw new AccessException(ResultEnum.CAPTCHA_ERROR);
         }
         // 用户名是否存在
         SysUserDO user = sysUserHelper.getUserByNameOrPassword(loginBean);
         if (user == null) {
-            throw new LevyException(ResultEnum.USERNAME_OR_PASSWORD_INCORRECT);
+            throw new AccessException(ResultEnum.USERNAME_OR_PASSWORD_INCORRECT);
         }
         // 将用户名存入session中
         request.getSession().setAttribute("token",user.getName());

@@ -47,9 +47,9 @@ public class CorsConfig implements WebMvcConfigurer {
         interceptor.excludePathPatterns("/swagger-resources/**");
         interceptor.excludePathPatterns("/v2/api-docs");
         // 登录
-        interceptor.excludePathPatterns("/login");
+        interceptor.excludePathPatterns("/login/userLogin");
         // 验证码
-        interceptor.excludePathPatterns("/captcha.jpg");
+        interceptor.excludePathPatterns("/login/captcha.jpg");
         // 服务监控
         interceptor.excludePathPatterns("/actuator/**");
     }

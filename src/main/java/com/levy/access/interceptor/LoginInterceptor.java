@@ -1,7 +1,7 @@
 package com.levy.access.interceptor;
 
 import com.levy.access.constants.enums.ResultEnum;
-import com.levy.access.exception.LevyException;
+import com.levy.access.exception.AccessException;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -24,7 +24,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         if (null != token) {
             return true;
         }
-        throw new LevyException(ResultEnum.NOT_LOGIN);
+        throw new AccessException(ResultEnum.NOT_LOGIN);
     }
 
 }

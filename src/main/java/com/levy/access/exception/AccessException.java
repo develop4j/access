@@ -7,14 +7,14 @@ import com.levy.access.http.HttpResult;
  * @author levy
  * @date 2020/12/2
  */
-public class LevyException extends RuntimeException {
+public class AccessException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
 
     private int code;
 
 
-    public LevyException(ResultEnum result) {
+    public AccessException(ResultEnum result) {
         super(result.getMessage());
         this.code = result.getCode();
     }
