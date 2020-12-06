@@ -1,5 +1,7 @@
 package com.levy.access.model;
 
+import tk.mybatis.mapper.annotation.LogicDelete;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -21,6 +23,7 @@ public class SysRoleDO {
     private Date createTime;
     private String lastUpdateBy;
     private Date lastUpdateTime;
+    @LogicDelete
     private Boolean delFlag;
 
     public Long getId() {

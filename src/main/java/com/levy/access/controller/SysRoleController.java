@@ -1,12 +1,15 @@
 package com.levy.access.controller;
 
 import com.levy.access.http.HttpResult;
+import com.levy.access.model.SysRoleDO;
 import com.levy.access.service.SysRoleService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @author levy
@@ -22,12 +25,12 @@ public class SysRoleController {
 
 
     @GetMapping("/getRole")
-    public HttpResult getSysRole(Long roleId) {
-        return new HttpResult(sysRoleService.getSysRole(roleId));
+    public HttpResult<SysRoleDO> getSysRole(Long roleId) {
+        return new HttpResult<>(sysRoleService.getSysRole(roleId));
     }
 
     @GetMapping("roleList")
-    public HttpResult getRoleList() {
-        return new HttpResult(sysRoleService.getRoleList());
+    public HttpResult<List> getRoleList() {
+        return new HttpResult<>(sysRoleService.getRoleList());
     }
 }

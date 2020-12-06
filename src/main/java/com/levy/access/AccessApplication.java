@@ -10,7 +10,7 @@ import tk.mybatis.spring.annotation.MapperScan;
  * @author levy
  * @date 2020/12/2
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.levy.access"})
 @Configuration
 @EnableSwagger2
 @MapperScan("com.levy.access.mapper")

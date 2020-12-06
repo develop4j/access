@@ -1,5 +1,6 @@
 package com.levy.access.http;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.levy.access.constants.enums.ResultEnum;
 
 /**
@@ -8,7 +9,7 @@ import com.levy.access.constants.enums.ResultEnum;
  * @author levy
  * @date 2020/12/3
  */
-public class HttpResult {
+public class HttpResult<T> {
 
     /**
      * 请求返回的编码
@@ -20,18 +21,20 @@ public class HttpResult {
     private String message;
     /**
      * 请求返回的内容
+     * 如果为空则不返回
      */
-    private Object data;
+    @JsonInclude(JsonInclude.Include.NON_NULL) //
+    private T data;
 
     public HttpResult() {
         this(ResultEnum.SUCCESS.getCode(), ResultEnum.SUCCESS.getMessage(), null);
     }
 
-    public HttpResult(Object data) {
+    public HttpResult(T data) {
         this(ResultEnum.SUCCESS.getCode(), ResultEnum.SUCCESS.getMessage(), data);
     }
 
-    public HttpResult(int code, String message, Object data) {
+    public HttpResult(int code, String message, T data) {
         this.code = code;
         this.message = message;
         this.data = data;
@@ -53,11 +56,11 @@ public class HttpResult {
         this.message = message;
     }
 
-    public Object getData() {
+    public T getData() {
         return data;
     }
 
-    public void setData(Object data) {
+    public void setData(T data) {
         this.data = data;
     }
 

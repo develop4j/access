@@ -6,7 +6,11 @@ package com.levy.access.constants.enums;
  */
 public enum ResultEnum {
     SUCCESS(200, "success"),
-    ERROE(400, "failed");
+    ERROE(400, "failed"),
+    CAPTCHA_INVALID(400, "验证码已失效"),
+    CAPTCHA_ERROR(400, "验证码不正确"),
+    NOT_LOGIN(400, "用户未登录"),
+    USERNAME_OR_PASSWORD_INCORRECT(400, "用户名或密码不正确");
     private int code;
     private String message;
 

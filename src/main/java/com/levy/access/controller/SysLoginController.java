@@ -1,18 +1,14 @@
 package com.levy.access.controller;
 
-import com.google.code.kaptcha.Constants;
-import com.google.code.kaptcha.Producer;
-import org.apache.tomcat.util.http.fileupload.IOUtils;
+import com.levy.access.http.HttpResult;
+import com.levy.access.model.SysUserDO;
+import com.levy.access.service.SysLoginService;
+import com.levy.access.vo.LoginBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import javax.imageio.ImageIO;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 /**
@@ -24,23 +20,17 @@ import java.io.IOException;
 public class SysLoginController {
 
     @Autowired
-    private Producer producer;
+    private SysLoginService sysLoginService;
+
 
     @GetMapping("/captcha.jpg")
     public void captcha(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.setHeader("Cache-Control", "no-store,no-cache");
-        response.setContentType("image/jpeg");
-        // 生成文字验证码
-        String text = producer.createText();
-        // 生成图片验证码
-        BufferedImage image = producer.createImage(text);
-        //保存验证码到session
-        request.getSession().setAttribute(Constants.KAPTCHA_SESSION_KEY, text);
-        //返回验证码
-        ServletOutputStream stream = response.getOutputStream();
-        ImageIO.write(image, "jpg", stream);
-        IOUtils.closeQuietly(stream);
+        sysLoginService.getCaptcha(request, response);
+    }
 
+    @PostMapping("/userLogin")
+    public HttpResult<SysUserDO> login(@RequestBody LoginBean loginBean, HttpServletRequest request) {
+        return new HttpResult(sysLoginService.login(loginBean, request));
     }
 
 }
