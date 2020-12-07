@@ -21,7 +21,9 @@ public class LoginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         // 获取登录信息
         String token = (String) request.getSession().getAttribute("token");
-        if (null != token) {
+        // 获取请求的地址
+        String url = request.getRequestURL().toString();
+        if (null != token || url.endsWith("/access/")) {
             return true;
         }
         throw new AccessException(ResultEnum.NOT_LOGIN);

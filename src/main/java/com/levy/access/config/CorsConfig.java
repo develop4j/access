@@ -52,5 +52,9 @@ public class CorsConfig implements WebMvcConfigurer {
         interceptor.excludePathPatterns("/login/captcha.jpg");
         // 服务监控
         interceptor.excludePathPatterns("/actuator/**");
+        // csrf
+        interceptor.excludePathPatterns("/csrf");
+        // error页面
+        interceptor.excludePathPatterns("/error");
     }
 }
