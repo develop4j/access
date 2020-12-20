@@ -63,7 +63,7 @@ public class SysLoginServiceImpl implements SysLoginService {
         String captcha = (String) request.getSession().getAttribute(Constants.KAPTCHA_SESSION_KEY);
         logger.info("登录获取到的验证码："+kaptcha);
         logger.info("Session ID："+request.getSession().getId());
-        logger.info("Session中获取到的验证码："+kaptcha);
+        logger.info("Session中获取到的验证码："+captcha);
         if (captcha == null) {
             throw new AccessException(ResultEnum.CAPTCHA_INVALID);
         }
