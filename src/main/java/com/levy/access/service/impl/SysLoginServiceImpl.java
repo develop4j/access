@@ -10,6 +10,8 @@ import com.levy.access.service.SysLoginService;
 import com.levy.access.utils.TokenUtils;
 import com.levy.access.vo.LoginBean;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +29,8 @@ import java.io.IOException;
 
 @Service
 public class SysLoginServiceImpl implements SysLoginService {
+    Logger logger = LoggerFactory.getLogger(SysLoginServiceImpl.class);
+
 
     @Autowired
     private Producer producer;
@@ -40,10 +44,12 @@ public class SysLoginServiceImpl implements SysLoginService {
         response.setContentType("image/jpeg");
         // 生成文字验证码
         String text = producer.createText();
+        logger.info("===============登录验证码："+text+"========");
         // 生成图片验证码
         BufferedImage image = producer.createImage(text);
         //保存验证码到session
         request.getSession().setAttribute(Constants.KAPTCHA_SESSION_KEY, text);
+        logger.info("===============SESSION ID："+request.getSession().getId()+"========");
         //返回验证码
         ServletOutputStream stream = response.getOutputStream();
         ImageIO.write(image, "jpg", stream);
@@ -52,8 +58,12 @@ public class SysLoginServiceImpl implements SysLoginService {
 
     @Override
     public String login(LoginBean loginBean, HttpServletRequest request) {
+        String kaptcha = loginBean.getCaptcha();
         // 获取验证码
         String captcha = (String) request.getSession().getAttribute(Constants.KAPTCHA_SESSION_KEY);
+        logger.info("登录获取到的验证码："+kaptcha);
+        logger.info("Session ID："+request.getSession().getId());
+        logger.info("Session中获取到的验证码："+kaptcha);
         if (captcha == null) {
             throw new AccessException(ResultEnum.CAPTCHA_INVALID);
         }
