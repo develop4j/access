@@ -29,7 +29,7 @@ public class SysRoleController {
         return new HttpResult<>(sysRoleService.getSysRole(roleId));
     }
 
-    @GetMapping("roleList")
+    @GetMapping("/roleList")
     public HttpResult<List> getRoleList() {
         return new HttpResult<>(sysRoleService.getRoleList());
     }

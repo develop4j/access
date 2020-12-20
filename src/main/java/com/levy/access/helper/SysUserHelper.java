@@ -1,11 +1,13 @@
 package com.levy.access.helper;
 
 import com.levy.access.mapper.SysUserMapper;
+import com.levy.access.model.DTO.SysUserDTO;
 import com.levy.access.model.SysUserDO;
 import com.levy.access.vo.LoginBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tk.mybatis.mapper.entity.Example;
+
+import java.util.List;
 
 /**
  * 用户相关信息
@@ -18,6 +20,14 @@ public class SysUserHelper {
 
     @Autowired
     SysUserMapper sysUserMapper;
+
+    public SysUserDTO getUserByNameAndPwd(String name, String pwd) {
+        return sysUserMapper.getUser(name, pwd);
+    }
+
+    public List<SysUserDTO> getAllUsers(String name) {
+        return sysUserMapper.getAllUsers(name);
+    }
 
     public SysUserDO getUserByNameOrPassword(LoginBean loginBean) {
         SysUserDO record = new SysUserDO();

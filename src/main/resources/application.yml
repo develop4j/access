@@ -8,7 +8,7 @@ spring:
     name: druidDataSource
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
-      driver-class-name: "com.mysql.jdbc.Driver"
+      driver-class-name: "com.mysql.cj.jdbc.Driver"
       url: "jdbc:mysql://rm-bp1h9auzhd85v1h5emo.mysql.rds.aliyuncs.com:3306/mango?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC"
       username: "levy"
       password: "qazWSX@1"
@@ -30,5 +30,6 @@ spring:
 
 mybatis:
   configuration:
-    use-actual-param-name: true
+#    use-actual-param-name: true
+    map-underscore-to-camel-case: true
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

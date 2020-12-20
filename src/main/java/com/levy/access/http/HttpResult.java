@@ -23,7 +23,7 @@ public class HttpResult<T> {
      * 请求返回的内容
      * 如果为空则不返回
      */
-    @JsonInclude(JsonInclude.Include.NON_NULL) //
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private T data;
 
     public HttpResult() {

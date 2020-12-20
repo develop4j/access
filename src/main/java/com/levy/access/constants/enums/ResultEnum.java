@@ -5,11 +5,29 @@ package com.levy.access.constants.enums;
  * @date 2020/12/3
  */
 public enum ResultEnum {
+    /**
+     * 成功
+     */
     SUCCESS(200, "success"),
+    /**
+     * 失败
+     */
     ERROE(400, "failed"),
-    CAPTCHA_INVALID(400, "验证码已失效"),
-    CAPTCHA_ERROR(400, "验证码不正确"),
-    NOT_LOGIN(400, "用户未登录"),
+    /**
+     * 验证码已失效
+     */
+    CAPTCHA_INVALID(60001, "验证码已失效"),
+    /**
+     * 验证码不正确
+     */
+    CAPTCHA_ERROR(60002, "验证码不正确"),
+    /**
+     * 用户未登录
+     */
+    NOT_LOGIN(60003, "用户未登录"),
+    /**
+     * 用户名或密码不正确
+     */
     USERNAME_OR_PASSWORD_INCORRECT(400, "用户名或密码不正确");
     private int code;
     private String message;

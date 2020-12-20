@@ -1,6 +1,5 @@
 package com.levy.access.service;
 
-import com.levy.access.model.SysUserDO;
 import com.levy.access.vo.LoginBean;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,5 +27,5 @@ public interface SysLoginService {
      * @param loginBean
      * @param request
      */
-    SysUserDO login(LoginBean loginBean, HttpServletRequest request);
+    String login(LoginBean loginBean, HttpServletRequest request);
 }
