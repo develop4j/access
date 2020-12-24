@@ -31,8 +31,8 @@ public class SysLoginController {
     }
 
     @PostMapping("/userLogin")
-    public HttpResult<SysUserDO> login(@RequestBody LoginBean loginBean, HttpServletRequest request) {
-        return new HttpResult(sysLoginService.login(loginBean, request));
+    public HttpResult<SysUserDO> login(@RequestBody LoginBean loginBean, HttpServletRequest request, HttpServletResponse response) {
+        return new HttpResult(sysLoginService.login(loginBean, request, response));
     }
 
 }

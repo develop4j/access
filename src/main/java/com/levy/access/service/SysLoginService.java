@@ -26,6 +26,7 @@ public interface SysLoginService {
      *
      * @param loginBean
      * @param request
+     * @param response
      */
-    String login(LoginBean loginBean, HttpServletRequest request);
+    String login(LoginBean loginBean, HttpServletRequest request, HttpServletResponse response);
 }
