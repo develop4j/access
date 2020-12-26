@@ -25,6 +25,13 @@ public class SysUserHelper {
         return sysUserMapper.getUser(name, pwd);
     }
 
+    public SysUserDO getUserInfo(String name, String pwd) {
+        SysUserDO sysUser = new SysUserDO();
+        sysUser.setName(name);
+        sysUser.setPassword(pwd);
+        return sysUserMapper.selectOne(sysUser);
+    }
+
     public List<SysUserDTO> getAllUsers(String name) {
         return sysUserMapper.getAllUsers(name);
     }

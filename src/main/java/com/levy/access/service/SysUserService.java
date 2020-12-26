@@ -1,6 +1,7 @@
 package com.levy.access.service;
 
 import com.levy.access.model.DTO.SysUserDTO;
+import com.levy.access.model.SysUserDO;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -17,6 +18,14 @@ public interface SysUserService {
      * @return
      */
     SysUserDTO getUser(HttpServletRequest request);
+
+    /**
+     * 获取用户信息
+     *
+     * @param request
+     * @return
+     */
+    SysUserDO getUserInfo(HttpServletRequest request);
 
     /**
      * 查询所有的用户信息

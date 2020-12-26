@@ -28,12 +28,25 @@ public enum ResultEnum {
     /**
      * 用户名或密码不正确
      */
-    USERNAME_OR_PASSWORD_INCORRECT(400, "用户名或密码不正确");
+    USERNAME_OR_PASSWORD_INCORRECT(60004, "用户名或密码不正确"),
+    /**
+     * 参数校验失败
+     */
+    PARAMETER_INVALID(60005, "参数[%s]不能为空"),
+    /**
+     * 无效请求
+     */
+    INVALID_REQUEST(60006, "无效的请求");
+
     private int code;
     private String message;
 
     ResultEnum(int code, String message) {
         this.code = code;
+        this.message = message;
+    }
+
+    public void setMessage(String message) {
         this.message = message;
     }
 
