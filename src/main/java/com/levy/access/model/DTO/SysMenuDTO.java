@@ -1,18 +1,12 @@
-package com.levy.access.model;
+package com.levy.access.model.DTO;
 
-import tk.mybatis.mapper.annotation.LogicDelete;
-
-import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author levy
  */
-@Entity
-@Table(name = "sys_menu")
-public class SysMenuDO {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class SysMenuDTO {
     private Long id;
 
     private String name;
@@ -37,7 +31,8 @@ public class SysMenuDO {
 
     private Date lastUpdateTime;
 
-    @LogicDelete
+    private List<SysMenuDTO> childrenList;
+
     private Byte delFlag;
 
     public Long getId() {
@@ -144,9 +139,17 @@ public class SysMenuDO {
         this.delFlag = delFlag;
     }
 
+    public List<SysMenuDTO> getChildrenList() {
+        return childrenList;
+    }
+
+    public void setChildrenList(List<SysMenuDTO> childrenList) {
+        this.childrenList = childrenList;
+    }
+
     @Override
     public String toString() {
-        return "SysMenuDO{" +
+        return "SysMenuDTO{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", parentId=" + parentId +
@@ -155,10 +158,11 @@ public class SysMenuDO {
                 ", type=" + type +
                 ", icon='" + icon + '\'' +
                 ", orderNum=" + orderNum +
-                ", creatorId='" + creatorId + '\'' +
+                ", creatorId=" + creatorId +
                 ", createTime=" + createTime +
                 ", lastUpdateBy='" + lastUpdateBy + '\'' +
                 ", lastUpdateTime=" + lastUpdateTime +
+                ", childrenList=" + childrenList +
                 ", delFlag=" + delFlag +
                 '}';
     }

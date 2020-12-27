@@ -6,6 +6,7 @@ import com.levy.access.helper.SysConfigHelper;
 import com.levy.access.model.SysConfigDO;
 import com.levy.access.model.SysUserDO;
 import com.levy.access.service.SysConfigService;
+import com.levy.access.utils.ParameterUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -22,9 +23,7 @@ public class SysConfigServiceImpl implements SysConfigService {
 
     @Override
     public SysConfigDO getSysConfig(SysUserDO user) {
-        if (user == null) {
-            throw new AccessException(ResultEnum.NOT_LOGIN);
-        }
+        ParameterUtils.checkParams(user, "user");
         return sysConfigHelper.getSysConfig(user.getId());
     }
 

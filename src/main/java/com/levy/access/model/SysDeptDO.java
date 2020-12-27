@@ -19,7 +19,7 @@ public class SysDeptDO {
 
     private Integer orderNum;
 
-    private String creatorId;
+    private Long creatorId;
 
     private Date createTime;
 
@@ -62,11 +62,11 @@ public class SysDeptDO {
         this.orderNum = orderNum;
     }
 
-    public String getCreatorId() {
+    public Long getCreatorId() {
         return creatorId;
     }
 
-    public void setCreatorId(String creatorId) {
+    public void setCreatorId(Long creatorId) {
         this.creatorId = creatorId;
     }
 
