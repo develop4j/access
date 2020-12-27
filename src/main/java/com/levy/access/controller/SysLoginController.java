@@ -35,4 +35,10 @@ public class SysLoginController {
         return new HttpResult(sysLoginService.login(loginBean, request, response));
     }
 
+    @PostMapping("/loginOut")
+    public HttpResult loginOut(HttpServletRequest request, HttpServletResponse response) {
+        sysLoginService.loginOut(request, response);
+        return new HttpResult<>();
+    }
+
 }

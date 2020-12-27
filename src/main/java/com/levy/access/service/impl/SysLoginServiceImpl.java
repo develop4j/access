@@ -89,4 +89,16 @@ public class SysLoginServiceImpl implements SysLoginService {
         response.addCookie(cookie);
         return user.getName();
     }
+
+    @Override
+    public void loginOut(HttpServletRequest request, HttpServletResponse response) {
+        // 清空session
+        request.getSession().removeAttribute("token");
+        // 存入cookies
+        Cookie cookie = new Cookie("token", null);
+        cookie.setMaxAge(24 * 60 * 60);
+        cookie.setPath("/");
+        request.removeAttribute("token");
+        response.addCookie(cookie);
+    }
 }

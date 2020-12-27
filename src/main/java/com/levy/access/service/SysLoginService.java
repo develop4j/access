@@ -29,4 +29,13 @@ public interface SysLoginService {
      * @param response
      */
     String login(LoginBean loginBean, HttpServletRequest request, HttpServletResponse response);
+
+    /**
+     * 登出
+     *
+     * @param request
+     * @param response
+     * @return
+     */
+    void loginOut(HttpServletRequest request, HttpServletResponse response);
 }
