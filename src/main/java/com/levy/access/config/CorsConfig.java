@@ -20,7 +20,7 @@ public class CorsConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        //允许你拿跨域访问的路径
+        //允许跨域访问的路径
         registry.addMapping("/**")
                 // 允许发动cookie
                 .allowCredentials(true)

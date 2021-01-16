@@ -33,7 +33,7 @@ public class ParameterUtils {
                 throw new AccessException(ResultEnum.PARAMETER_INVALID);
             }
         } else if (params instanceof Long) {
-            if ((long) params <             0) {
+            if ((long) params < 0) {
                 throw new AccessException(ResultEnum.PARAMETER_INVALID);
             }
         } else if (params instanceof Integer) {
